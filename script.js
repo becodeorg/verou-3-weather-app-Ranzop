@@ -8,6 +8,27 @@ axios ("url")
 .then (response => response.json)
 .then (data => console.log(data)); */
 
+import Data from "./config.js";
+
+console.log(Data.key);  
+
+
+
+/* console.log ('yo');
+const test = Data.key;
+console.log (test); */
+
+
+fetch("http://api.openweathermap.org/data/2.5/weather?q=Brussels&units=metric&appid=" + Data.key)
+.then(result => result.json())
+.then(data => console.log (data))
+
+
+let createTemp = document.createElement("div");
+createTemp.setAttribute("id", "temp");
+document.body.appendChild(createTemp);
+createTemp.classList.add("temp");
+
 /* const { default: axios } = require("axios");
 
 
@@ -33,10 +54,10 @@ document.body.appendChild(createWeather);
 
 const getWeather = document.getElementById("getWeather");
  */
-let weather;
+/* let weather;
 /* const axios = require('axios').default; */
 
-function setup () {
+/* function setup () {
     createCanvas (400, 200);
     loadJSON("http://api.openweathermap.org/data/2.5/weather?q=Brussels&units=metric&appid=cbc16f0f5aa36c366d6f598260b41240", gotData);
 }
@@ -52,5 +73,16 @@ function draw() {
         ellipse (100, 100, weather.main.temp, weather.main.temp)
         ellipse (300, 100, weather.main.humidity, weather.main.humidity)
     }
-}
+} */
+
+
+/* fetch ("http://api.openweathermap.org/data/2.5/weather?q=Brussels&units=metric&appid="Data.key" + "Data.temp")
+.then (response => response.json())
+.then (result => console.log(result.results[0])); */
+
+// result.results.forEach(pokemon => {
+    //call a function here for example: createPokemon(pokemon);
+// })
+
+
 
