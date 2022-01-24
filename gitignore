@@ -1,0 +1,3 @@
+having a separate file with all your information linked to a config.js file is best practice.
+
+config.js
