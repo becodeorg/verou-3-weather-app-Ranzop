@@ -8,14 +8,21 @@ axios ("url")
 .then (response => response.json)
 .then (data => console.log(data)); */
 
-const { urlObjectKeys } = require("next/dist/shared/lib/utils");
+const { default: axios } = require("axios");
 
 
-fetch("https://pokeapi.co/api/v2/ability")
-.then (response => response.json())
-.then (data => console.log(data));
+axios.get("https://pokeapi.co/api/v2/ability").then (response => console.log (response));
+
 
 
 /* You have to replace parts of your API url, or if you want to access a specific location,
 you will want to store that also in the API url, in its appropriate place {city name} for example. */
 
+// TODO: search bar for city name
+// TODO: create weather display
+// TODO: submit or enter clickevent -> make weather appear
+// TODO: responsiveness
+
+const config = require("./config")
+
+// API + config.key
