@@ -1,5 +1,3 @@
-
-
 /*  You fetch or "axios" the API in a url. This often has a key to access. It will go to this link and see if there is information. 
 Then you have the ability to store that information -> .then (response => response.json) = change that response in .json format.
 Afterwards you store the information into a variable. 
@@ -12,7 +10,7 @@ axios ("url")
 import Key from "./config.js";
 
 
-  // Retrieving data from JSON
+// Retrieving data from JSON
 
 /* getTemp = (data) => {
   let x =  data.main;
@@ -41,33 +39,56 @@ tempOutput.setAttribute("id", "temp");
 document.body.appendChild(tempOutput);
 tempOutput.classList.add("temp");
 
+let cloudOutput = document.createElement("div");
+cloudOutput.setAttribute("id", "cloud");
+document.body.appendChild(cloudOutput);
+cloudOutput.classList.add("cloud");
+
 const api_url = "https://api.openweathermap.org/data/2.5/weather?q="
+
+
+
+console.log(api_url + "Brussels" + "&units=metric&appid=" + Key.key);
+
+
 
 const callWeather = (event) => {
     event.preventDefault();
     const location = locationInputValue.value;
     console.log(location);
-    
+
     const getWeather = async () => {
-    const result = await fetch (api_url + location + "&units=metric&appid=" + Key.key);
-    const data = await result.json();
-        console.log(data);
+        const result = await fetch(api_url + location + "&units=metric&appid=" + Key.key);
+        const weather = await result.json();
+        fluffyCloudIndicator(weather);
+        console.log(fluffyCloudIndicator(weather));
     }
-    getWeather ();
+    getWeather();
 }
 
-console.log(api_url + "Brussels" + "&units=metric&appid=" + Key.key);
+
+
+
+// You don't have to return if there is no targetted output.
+
+const fluffyCloudIndicator = (weather) => {
+    const getClouds = weather.clouds.all;
+    cloudOutput.innerHTML = getClouds;
+    return getClouds;
+}
+
+
 
 
 /* getWeather (); */
 
-submitButton.addEventListener('click', callWeather); 
+submitButton.addEventListener('click', callWeather);
 
 
 console.log(location);
 
- //   http://api.openweathermap.org/data/2.5/weather?q=
-console.log (api_url + location + "s&units=metric&appid=" + Key.key);
+//   http://api.openweathermap.org/data/2.5/weather?q=
+console.log(api_url + location + "s&units=metric&appid=" + Key.key);
 
 
 
@@ -144,8 +165,5 @@ function draw() {
 .then (result => console.log(result.results[0])); */
 
 // result.results.forEach(pokemon => {
-    //call a function here for example: createPokemon(pokemon);
+//call a function here for example: createPokemon(pokemon);
 // })
-
-
-
