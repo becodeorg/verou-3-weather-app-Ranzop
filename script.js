@@ -20,29 +20,54 @@ import Key from "./config.js";
 /* console.log ('yo');
 const test = Data.key;
 console.log (test); */
+const getJarallaxBackGround = document.getElementsByClassName("jarallax_background");
+console.log(getJarallaxBackGround);
+const getBody = document.getElementsByTagName("body");
 
 let submitButton = document.createElement("input");
 submitButton.setAttribute("type", "button");
 submitButton.setAttribute("id", "submit");
 document.body.appendChild(submitButton);
+const getSubmitButton = document.getElementById("submit");
+getBody[0].insertBefore(getSubmitButton, getJarallaxBackGround[0]);
+
+function setAttributes (el, attrs) {
+    for (var input in attrs) {
+        el.setAttribute(input, attrs[input]);
+    }
+}
+
+// input = is the element "attribute", and attrs is the "attribute" attribue
+
+setAttributes(submitButton, {
+    "id": "submit",
+    "class": "submit",
+});
+
 
 
 let locationInputValue = document.createElement("input");
 locationInputValue.setAttribute("type", "text");
 locationInputValue.setAttribute("id", "location");
 document.body.appendChild(locationInputValue);
+const getLocationValue = document.getElementById("location");
+getBody[0].insertBefore(locationInputValue, getJarallaxBackGround[0]);
 
-console.log(locationInputValue);
+
+
+console.log(getLocationValue);
 
 let tempOutput = document.createElement("div");
 tempOutput.setAttribute("id", "temp");
-document.body.appendChild(tempOutput);
+document.body.appendChild(locationInputValue);
 tempOutput.classList.add("temp");
 
 let cloudOutput = document.createElement("div");
 cloudOutput.setAttribute("id", "cloud");
-document.body.appendChild(cloudOutput);
+document.body.appendChild(locationInputValue);
 cloudOutput.classList.add("cloud");
+
+
 
 const api_url = "https://api.openweathermap.org/data/2.5/weather?q="
 
@@ -58,7 +83,7 @@ const callWeather = (event) => {
     console.log(location);
 
     const getWeather = async () => {
-        const result = await fetch(api_url + location + "&units=metric&appid=" + Key.key);
+        const result = await fetch(api_url + `${location}&units=metric&appid=` + Key.key);
         const weather = await result.json();
         fluffyCloudIndicator(weather);
         console.log(fluffyCloudIndicator(weather));
@@ -93,7 +118,6 @@ console.log(api_url + location + "s&units=metric&appid=" + Key.key);
 
 
 //async function getWeather () {fetch(api_url + `${location}&units=metric&appid=` + Key.key)
-
 
 
 
