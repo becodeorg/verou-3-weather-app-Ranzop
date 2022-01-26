@@ -20,22 +20,40 @@ import Key from "./config.js";
 /* console.log ('yo');
 const test = Data.key;
 console.log (test); */
-const getJarallaxBackGround = document.getElementsByClassName("jarallax_background");
-console.log(getJarallaxBackGround);
+/* const getCloudContainer = document.getElementsByClassName("cloud-container");
+console.log(getCloudContainer);
 const getBody = document.getElementsByTagName("body");
 
-let submitButton = document.createElement("input");
+const submitButton = document.createElement("input");
 submitButton.setAttribute("type", "button");
 submitButton.setAttribute("id", "submit");
 document.body.appendChild(submitButton);
 const getSubmitButton = document.getElementById("submit");
-getBody[0].insertBefore(getSubmitButton, getJarallaxBackGround[0]);
+getBody[0].insertBefore(getSubmitButton, getCloudContainer[0]);
+
+const locationInputValue = document.createElement("input");
+locationInputValue.setAttribute("type", "text");
+locationInputValue.setAttribute("id", "location");
+document.body.appendChild(locationInputValue);
+const getLocationValue = document.getElementById("location");
+getBody[0].insertBefore(getLocationValue, getCloudContainer[0]); */
+
+
+
+const getCloudsDiv = document.querySelectorAll(".clouds");
+console.log (getCloudsDiv);
+
+
+
+
+
 
 function setAttributes (el, attrs) {
-    for (var input in attrs) {
-        el.setAttribute(input, attrs[input]);
+    for(var key in attrs) {
+        el.setAttribute(key, attrs[key]);
     }
 }
+
 
 // input = is the element "attribute", and attrs is the "attribute" attribue
 
@@ -46,16 +64,11 @@ setAttributes(submitButton, {
 
 
 
-let locationInputValue = document.createElement("input");
-locationInputValue.setAttribute("type", "text");
-locationInputValue.setAttribute("id", "location");
-document.body.appendChild(locationInputValue);
-const getLocationValue = document.getElementById("location");
-getBody[0].insertBefore(locationInputValue, getJarallaxBackGround[0]);
 
 
 
-console.log(getLocationValue);
+
+/* console.log(getLocationValue);
 
 let tempOutput = document.createElement("div");
 tempOutput.setAttribute("id", "temp");
@@ -65,7 +78,7 @@ tempOutput.classList.add("temp");
 let cloudOutput = document.createElement("div");
 cloudOutput.setAttribute("id", "cloud");
 document.body.appendChild(locationInputValue);
-cloudOutput.classList.add("cloud");
+cloudOutput.classList.add("cloud"); */
 
 
 
