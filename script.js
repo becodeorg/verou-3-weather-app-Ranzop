@@ -12,38 +12,84 @@ import Key from "./config.js";
 const api_url = "https://api.openweathermap.org/data/2.5/weather?q="
 console.log(api_url + "Brussels" + "&units=metric&appid=" + Key.key);
 
-const submitButton = document.getElementById("button");
-console.log (submitButton);
+const submitButton = document.getElementById("submit");
+console.log(submitButton);
 
+const inputDestination = document.getElementById("destination");
+console.log(inputDestination);
 
+const outputCloud = document.createElement("p");
+inputDestination.insertAdjacentElement("afterend", outputCloud);
 
-const getDestination = document.getElementById("destination");
-console.log(getDestination);
-
-getDestination.insertAdjacentElement("afterend", submitButton);
+const highCloudIndicator = document.getElementById("highCloudIndicator");
+const bigCloudIndicator = document.getElementById("bigCloudIndicator");
 
 const callWeather = (event) => {
     event.preventDefault();
-    const location = locationInputValue.value;
+    const location = inputDestination.value;
     console.log(location);
 
-    const getWeather = async () => {
-        const result = await fetch(api_url + `${location}&units=metric&appid=` + Key.key);
-        const weather = await result.json();
-        fluffyCloudIndicator(weather);
-        console.log(fluffyCloudIndicator(weather));
+    /*  const getWeather = async () => {
+         const result = await fetch(api_url + `${location}&units=metric&appid=` + Key.key);
+         const weather = await result.json();
+         fluffyCloudIndicator(weather);
+         console.log(fluffyCloudIndicator(weather));
+         compareCloudIndicator(weather);
+         console.log(compareCloudIndicator(weather));
+     }
+     getWeather(); */
+    fetch(
+            api_url +
+            `${location}&units=metric&appid=` +
+            Key.key)
+        .then((response) => response.json())
+        .then((weather) => {
+            console.log(weather);
+            fluffyCloudIndicator(weather);
+            console.log(fluffyCloudIndicator(weather));
+            compareCloudIndicator(weather);
+            console.log(compareCloudIndicator(weather));
+        })
     }
-    getWeather();
-}
+
+
 
 const fluffyCloudIndicator = (weather) => {
     const getClouds = weather.clouds.all;
-    cloudOutput.innerHTML = getClouds;
+    outputCloud.innerHTML = getClouds;
     return getClouds;
 }
 
+function setAttributes(el, attrs) {
+    for (var key in attrs) {
+        el.setAttribute(key, attrs[key]);
+    }
+}
+
+setAttributes(outputCloud, {
+    "id": "output",
+    "class": "outputCloud",
+});
+
+const compareCloudIndicator = () => {
+    if (outputCloud.innerHTML > 80) {
+        console.log('yoooo'),
+            highCloudIndicator.style.visibility = "visible";
+        bigCloudIndicator.style.visibility = "visible";
+    } else if (outputCloud.innerHTML > 60) {
+        highCloudIndicator.style.visibility = "visible";
+    }
+}
+compareCloudIndicator();
+
+const inputField = document.getElementById("destination");
 
 submitButton.addEventListener('click', callWeather);
+inputField.addEventListener ('keypress', function (e) {
+    if (e.code === 'Enter') {
+        callWeather(e);
+    }
+});
 
 
 console.log(location);
@@ -51,19 +97,10 @@ console.log(location);
 //   http://api.openweathermap.org/data/2.5/weather?q=
 console.log(api_url + location + "s&units=metric&appid=" + Key.key);
 
-function setAttributes (el, attrs) {
-    for(var key in attrs) {
-        el.setAttribute(key, attrs[key]);
-    }
-}
+
 
 
 // input = is the element "attribute", and attrs is the "attribute" attribue
-
-setAttributes(submitButton, {
-    "id": "submit",
-    "class": "submit",
-});
 
 
 
@@ -89,10 +126,7 @@ document.body.appendChild(submitButton);
 const getSubmitButton = document.getElementById("submit");
 getBody[0].insertBefore(getSubmitButton, getCloudContainer[0]);
 
-const locationInputValue = document.createElement("input");
-locationInputValue.setAttribute("type", "text");
-locationInputValue.setAttribute("id", "location");
-document.body.appendChild(locationInputValue);
+
 
 getBody[0].insertBefore(getLocationValue, getCloudContainer[0]); */
 

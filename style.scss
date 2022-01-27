@@ -24,20 +24,21 @@ header p {
     color: whitesmoke;
     opacity: 0.9;
     font-weight: 800;
-    font-size:x-large;
+    font-size: x-large;
     text-shadow: black 2px 2px 2px;
 }
 
 .cloudLeft {
     background-image: url(./images/many-fluffies.png);
-    background: linear-gradient(17deg, rgba(96,183,240,.8), rgba(84, 183, 240,.8) 70.71%);
+    background: linear-gradient(17deg, rgba(96, 183, 240, .8), rgba(84, 183, 240, .8) 70.71%);
     background-repeat: no-repeat;
     width: 40vw;
     height: 80vh;
     display: inline-block;
 }
+
 .cloudRight {
-    background: linear-gradient(52deg, rgba(96,183,240,.8), rgba(84, 183, 240,.8) 70.71%);
+    background: linear-gradient(52deg, rgba(96, 183, 240, .8), rgba(84, 183, 240, .8) 70.71%);
     background-repeat: no-repeat;
     width: 70vw;
     height: 80vh;
@@ -47,65 +48,155 @@ header p {
 }
 
 .destination {
-    position: relative;
     bottom: 48rem;
     left: 5rem;
     z-index: 2;
 }
 
-#destination {
-    width: 12.2rem;
+input[type="text"] {
+    color: rgb(26, 24, 24);
+    font-weight: 800;
 }
 
-.destination#button{
-    padding:0.2rem 2.5rem 0.2rem 2.6rem;
+#destination {
+    position: relative;
+    width: 12.2rem;
+    bottom: 48rem;
+}
+
+.destination#submit {
+    padding: 0.2rem 2.5rem 0.2rem 2.6rem;
     position: relative;
     left: 4.5rem;
-    color: rgba(96,183,240,.8);
+    color: rgba(96, 183, 240, .8);
     opacity: 0.9;
     font-weight: 800;
     font-size: large;
     text-shadow: black 2px 2px 2px;
 }
 
-#floatCloudRight{
+.outputCloud#output {
+    display: none;
+}
+
+#highCloudIndicator {
+    position: relative;
+    z-index: 1;
+    animation: animateHighClouds 10s linear infinite;
+    visibility: hidden;
+}
+
+@keyframes animateHighClouds {
+    0% {
+        top: 0;
+        bottom: 35rem;
+        right: 50px;
+    }
+
+    50% {
+        top: 50px;
+        right: 1000px;
+    }
+
+    74% {
+        transform: rotate(0deg);
+    }
+
+    75% {
+        transform: rotate(180deg);
+
+    }
+
+    95% {
+        top: 50px;
+        right: -1000px;
+    }
+}
+
+#bigCloudIndicator {
+    position: relative;
+    z-index: 1;
+    animation: animateBigClouds 20s linear infinite;
+    visibility: hidden;
+}
+
+@keyframes animateBigClouds {
+    0% {
+        top:-40rem;
+        right: 50px;
+    }
+
+    50% {
+        top: 50px;
+        right: 1000px;
+        top: -40rem;
+    }
+
+    74% {
+        transform: rotate(0deg);
+    }
+
+    75% {
+        transform: rotate(180deg);
+        top: -40rem;
+    }
+
+    95% {
+        top: 50px;
+        right: -1000px;
+        rotate: 250deg;
+    }
+    100% {
+        transform: rotate(380deg);
+    }
+}
+
+
+#floatCloudRight {
     position: relative;
     animation: animateCloudRight 5s linear infinite;
 }
+
 @keyframes animateCloudRight {
-    0%{
+    0% {
         top: 100px;
         transform: rotateY(-45deg);
         transform: rotate(-90deg);
         right: 50px;
     }
-    50%{
+
+    50% {
         top: 50px;
         right: 100px;
     }
-    100%{
+
+    100% {
         top: 500px;
         right: 200px;
     }
 }
-#floatCloudLeft{
+
+#floatCloudLeft {
     position: relative;
     animation: animateCloudLeft 15s linear infinite;
     z-index: 1;
 }
+
 @keyframes animateCloudLeft {
-    0%{
+    0% {
         top: 100px;
         transform: rotateY(-45deg);
         transform: rotate(-90deg);
         right: 50px;
     }
-    50%{
+
+    50% {
         top: 300px;
         right: 100px;
         transform: rotate(180deg);
     }
-    100%{
+
+    100% {
         top: 500px;
         right: 600px;
     }
@@ -118,6 +209,7 @@ header p {
         justify-content: left;
         padding: 0 0 0 3rem;
     }
+
     .cloudRight {
         left: 10rem;
     }
@@ -213,7 +305,7 @@ header p {
         border-bottom-left-radius: 200px;
     } */
 
- /*    .cloud-container .loader:after {
+/*    .cloud-container .loader:after {
         content: "";
         position: absolute;
         top: 0;

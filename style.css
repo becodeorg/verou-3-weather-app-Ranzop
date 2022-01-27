@@ -60,17 +60,23 @@ header p {
 }
 
 .destination {
-  position: relative;
   bottom: 48rem;
   left: 5rem;
   z-index: 2;
 }
 
-#destination {
-  width: 12.2rem;
+input[type="text"] {
+  color: #1a1818;
+  font-weight: 800;
 }
 
-.destination#button {
+#destination {
+  position: relative;
+  width: 12.2rem;
+  bottom: 48rem;
+}
+
+.destination#submit {
   padding: 0.2rem 2.5rem 0.2rem 2.6rem;
   position: relative;
   left: 4.5rem;
@@ -79,6 +85,134 @@ header p {
   font-weight: 800;
   font-size: large;
   text-shadow: black 2px 2px 2px;
+}
+
+.outputCloud#output {
+  display: none;
+}
+
+#highCloudIndicator {
+  position: relative;
+  z-index: 1;
+  -webkit-animation: animateHighClouds 10s linear infinite;
+          animation: animateHighClouds 10s linear infinite;
+  visibility: hidden;
+}
+
+@-webkit-keyframes animateHighClouds {
+  0% {
+    top: 0;
+    bottom: 35rem;
+    right: 50px;
+  }
+  50% {
+    top: 50px;
+    right: 1000px;
+  }
+  74% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  75% {
+    -webkit-transform: rotate(180deg);
+            transform: rotate(180deg);
+  }
+  95% {
+    top: 50px;
+    right: -1000px;
+  }
+}
+
+@keyframes animateHighClouds {
+  0% {
+    top: 0;
+    bottom: 35rem;
+    right: 50px;
+  }
+  50% {
+    top: 50px;
+    right: 1000px;
+  }
+  74% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  75% {
+    -webkit-transform: rotate(180deg);
+            transform: rotate(180deg);
+  }
+  95% {
+    top: 50px;
+    right: -1000px;
+  }
+}
+
+#bigCloudIndicator {
+  position: relative;
+  z-index: 1;
+  -webkit-animation: animateBigClouds 20s linear infinite;
+          animation: animateBigClouds 20s linear infinite;
+  visibility: hidden;
+}
+
+@-webkit-keyframes animateBigClouds {
+  0% {
+    top: -40rem;
+    right: 50px;
+  }
+  50% {
+    top: 50px;
+    right: 1000px;
+    top: -40rem;
+  }
+  74% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  75% {
+    -webkit-transform: rotate(180deg);
+            transform: rotate(180deg);
+    top: -40rem;
+  }
+  95% {
+    top: 50px;
+    right: -1000px;
+    rotate: 250deg;
+  }
+  100% {
+    -webkit-transform: rotate(380deg);
+            transform: rotate(380deg);
+  }
+}
+
+@keyframes animateBigClouds {
+  0% {
+    top: -40rem;
+    right: 50px;
+  }
+  50% {
+    top: 50px;
+    right: 1000px;
+    top: -40rem;
+  }
+  74% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  75% {
+    -webkit-transform: rotate(180deg);
+            transform: rotate(180deg);
+    top: -40rem;
+  }
+  95% {
+    top: 50px;
+    right: -1000px;
+    rotate: 250deg;
+  }
+  100% {
+    -webkit-transform: rotate(380deg);
+            transform: rotate(380deg);
+  }
 }
 
 #floatCloudRight {
