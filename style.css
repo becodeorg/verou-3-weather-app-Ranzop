@@ -20,6 +20,7 @@ header {
   overflow: hidden;
   background-repeat: repeat;
   height: 4rem;
+  width: 110%;
 }
 
 header p {
@@ -39,12 +40,152 @@ header p {
   text-shadow: black 2px 2px 2px;
 }
 
-/* @media only screen and (max-width: 600px) {
-    header p {
-
-    }
+.cloudLeft {
+  background-image: url(./images/many-fluffies.png);
+  background: linear-gradient(17deg, rgba(96, 183, 240, 0.8), rgba(84, 183, 240, 0.8) 70.71%);
+  background-repeat: no-repeat;
+  width: 40vw;
+  height: 80vh;
+  display: inline-block;
 }
- */
+
+.cloudRight {
+  background: linear-gradient(52deg, rgba(96, 183, 240, 0.8), rgba(84, 183, 240, 0.8) 70.71%);
+  background-repeat: no-repeat;
+  width: 70vw;
+  height: 80vh;
+  position: relative;
+  bottom: 30.05rem;
+  left: 7.979rem;
+}
+
+.destination {
+  position: relative;
+  bottom: 48rem;
+  left: 5rem;
+  z-index: 2;
+}
+
+#destination {
+  width: 12.2rem;
+}
+
+.destination#button {
+  padding: 0.2rem 2.5rem 0.2rem 2.6rem;
+  position: relative;
+  left: 4.5rem;
+  color: rgba(96, 183, 240, 0.8);
+  opacity: 0.9;
+  font-weight: 800;
+  font-size: large;
+  text-shadow: black 2px 2px 2px;
+}
+
+#floatCloudRight {
+  position: relative;
+  -webkit-animation: animateCloudRight 5s linear infinite;
+          animation: animateCloudRight 5s linear infinite;
+}
+
+@-webkit-keyframes animateCloudRight {
+  0% {
+    top: 100px;
+    -webkit-transform: rotateY(-45deg);
+            transform: rotateY(-45deg);
+    -webkit-transform: rotate(-90deg);
+            transform: rotate(-90deg);
+    right: 50px;
+  }
+  50% {
+    top: 50px;
+    right: 100px;
+  }
+  100% {
+    top: 500px;
+    right: 200px;
+  }
+}
+
+@keyframes animateCloudRight {
+  0% {
+    top: 100px;
+    -webkit-transform: rotateY(-45deg);
+            transform: rotateY(-45deg);
+    -webkit-transform: rotate(-90deg);
+            transform: rotate(-90deg);
+    right: 50px;
+  }
+  50% {
+    top: 50px;
+    right: 100px;
+  }
+  100% {
+    top: 500px;
+    right: 200px;
+  }
+}
+
+#floatCloudLeft {
+  position: relative;
+  -webkit-animation: animateCloudLeft 15s linear infinite;
+          animation: animateCloudLeft 15s linear infinite;
+  z-index: 1;
+}
+
+@-webkit-keyframes animateCloudLeft {
+  0% {
+    top: 100px;
+    -webkit-transform: rotateY(-45deg);
+            transform: rotateY(-45deg);
+    -webkit-transform: rotate(-90deg);
+            transform: rotate(-90deg);
+    right: 50px;
+  }
+  50% {
+    top: 300px;
+    right: 100px;
+    -webkit-transform: rotate(180deg);
+            transform: rotate(180deg);
+  }
+  100% {
+    top: 500px;
+    right: 600px;
+  }
+}
+
+@keyframes animateCloudLeft {
+  0% {
+    top: 100px;
+    -webkit-transform: rotateY(-45deg);
+            transform: rotateY(-45deg);
+    -webkit-transform: rotate(-90deg);
+            transform: rotate(-90deg);
+    right: 50px;
+  }
+  50% {
+    top: 300px;
+    right: 100px;
+    -webkit-transform: rotate(180deg);
+            transform: rotate(180deg);
+  }
+  100% {
+    top: 500px;
+    right: 600px;
+  }
+}
+
+@media only screen and (min-width: 600px) {
+  header p {
+    -webkit-box-pack: left;
+        -ms-flex-pack: left;
+            justify-content: left;
+    padding: 0 0 0 3rem;
+  }
+  .cloudRight {
+    left: 10rem;
+  }
+}
+
 /* body {
     background: linear-gradient(15deg, #0056a7, #165fa3, #477aaa);
     font-family: "Neonderthaw";
@@ -92,19 +233,6 @@ header p {
     align-items: center;
     z-index: 15;
     background-image: url(./images/fluffly.png);
-    animation: animateCloudRight 20s linear infinite;
-}
-@keyframes animateCloudRight {
-    0%{
-        background-position: 0;
-    }
-    50%{
-        background-position: -50%;
-    }
-    100%{
-        background-position: 162.5%;
-    }
-}
 
 
 

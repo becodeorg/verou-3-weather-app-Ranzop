@@ -13,14 +13,23 @@
 
 <body>
   <header>
-<p><span>Cloudy Today; isn't it?</span></p>
+    <p><span>Cloudy Today; isn't it?</span></p>
   </header>
   <main>
-    <div class="cloudLeft"></div>
-    <div class="cloudRight"></div>
-    <p class="destination"></p>
-    <input type="text">
-    <input type="button">
+    <div class="cloudLeft">
+      <div id="floatCloudLeft">
+        <img src="./images/another-fluffy.png" alt="fluffy cloud">
+      </div>
+    </div>
+    <div class="cloudRight">
+      <div id="floatCloudRight">
+        <img src="./images/many-fluffies.png" alt="many fluffy clouds">
+      </div>
+    </div>
+    <div id="flexInputContainer" class="yo">
+      <input class="destination" type="text" id="destination">
+      <input id="button" class="destination" type="button" value="Where to Captain?">
+    </div>
   </main>
   <script type="module" src="./script.js"></script>
 </body>

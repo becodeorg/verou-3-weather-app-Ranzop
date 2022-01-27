@@ -9,6 +9,64 @@ axios ("url")
 
 import Key from "./config.js";
 
+const api_url = "https://api.openweathermap.org/data/2.5/weather?q="
+console.log(api_url + "Brussels" + "&units=metric&appid=" + Key.key);
+
+const submitButton = document.getElementById("button");
+console.log (submitButton);
+
+
+
+const getDestination = document.getElementById("destination");
+console.log(getDestination);
+
+getDestination.insertAdjacentElement("afterend", submitButton);
+
+const callWeather = (event) => {
+    event.preventDefault();
+    const location = locationInputValue.value;
+    console.log(location);
+
+    const getWeather = async () => {
+        const result = await fetch(api_url + `${location}&units=metric&appid=` + Key.key);
+        const weather = await result.json();
+        fluffyCloudIndicator(weather);
+        console.log(fluffyCloudIndicator(weather));
+    }
+    getWeather();
+}
+
+const fluffyCloudIndicator = (weather) => {
+    const getClouds = weather.clouds.all;
+    cloudOutput.innerHTML = getClouds;
+    return getClouds;
+}
+
+
+submitButton.addEventListener('click', callWeather);
+
+
+console.log(location);
+
+//   http://api.openweathermap.org/data/2.5/weather?q=
+console.log(api_url + location + "s&units=metric&appid=" + Key.key);
+
+function setAttributes (el, attrs) {
+    for(var key in attrs) {
+        el.setAttribute(key, attrs[key]);
+    }
+}
+
+
+// input = is the element "attribute", and attrs is the "attribute" attribue
+
+setAttributes(submitButton, {
+    "id": "submit",
+    "class": "submit",
+});
+
+
+
 
 // Retrieving data from JSON
 
@@ -35,32 +93,14 @@ const locationInputValue = document.createElement("input");
 locationInputValue.setAttribute("type", "text");
 locationInputValue.setAttribute("id", "location");
 document.body.appendChild(locationInputValue);
-const getLocationValue = document.getElementById("location");
+
 getBody[0].insertBefore(getLocationValue, getCloudContainer[0]); */
 
 
 
-const getCloudsDiv = document.querySelectorAll(".clouds");
-console.log (getCloudsDiv);
 
 
 
-
-
-
-function setAttributes (el, attrs) {
-    for(var key in attrs) {
-        el.setAttribute(key, attrs[key]);
-    }
-}
-
-
-// input = is the element "attribute", and attrs is the "attribute" attribue
-
-setAttributes(submitButton, {
-    "id": "submit",
-    "class": "submit",
-});
 
 
 
@@ -82,51 +122,13 @@ cloudOutput.classList.add("cloud"); */
 
 
 
-const api_url = "https://api.openweathermap.org/data/2.5/weather?q="
-
-
-
-console.log(api_url + "Brussels" + "&units=metric&appid=" + Key.key);
-
-
-
-const callWeather = (event) => {
-    event.preventDefault();
-    const location = locationInputValue.value;
-    console.log(location);
-
-    const getWeather = async () => {
-        const result = await fetch(api_url + `${location}&units=metric&appid=` + Key.key);
-        const weather = await result.json();
-        fluffyCloudIndicator(weather);
-        console.log(fluffyCloudIndicator(weather));
-    }
-    getWeather();
-}
 
 
 
 
 // You don't have to return if there is no targetted output.
 
-const fluffyCloudIndicator = (weather) => {
-    const getClouds = weather.clouds.all;
-    cloudOutput.innerHTML = getClouds;
-    return getClouds;
-}
 
-
-
-
-/* getWeather (); */
-
-submitButton.addEventListener('click', callWeather);
-
-
-console.log(location);
-
-//   http://api.openweathermap.org/data/2.5/weather?q=
-console.log(api_url + location + "s&units=metric&appid=" + Key.key);
 
 
 
