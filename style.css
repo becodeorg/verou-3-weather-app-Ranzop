@@ -4,6 +4,7 @@
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   font-family: "Neonderthaw";
+  overflow: hidden;
 }
 
 header {
@@ -20,7 +21,7 @@ header {
   overflow: hidden;
   background-repeat: repeat;
   height: 4rem;
-  width: 110%;
+  width: 100%;
 }
 
 header p {
@@ -36,50 +37,52 @@ header p {
   color: whitesmoke;
   opacity: 0.9;
   font-weight: 800;
-  font-size: x-large;
+  font-size: 2rem;
   text-shadow: black 2px 2px 2px;
 }
 
-.cloudLeft {
-  background-image: url(./images/many-fluffies.png);
+.cloudLeftbg {
   background: linear-gradient(17deg, rgba(96, 183, 240, 0.8), rgba(84, 183, 240, 0.8) 70.71%);
-  background-repeat: no-repeat;
-  width: 40vw;
-  height: 80vh;
+  width: 100vw;
+  height: 100vh;
   display: inline-block;
+  z-index: -1;
 }
 
-.cloudRight {
-  background: linear-gradient(52deg, rgba(96, 183, 240, 0.8), rgba(84, 183, 240, 0.8) 70.71%);
-  background-repeat: no-repeat;
-  width: 70vw;
-  height: 80vh;
-  position: relative;
-  bottom: 30.05rem;
-  left: 7.979rem;
+#flexInputContainer {
+  padding: 2rem 2rem 2rem 2rem;
+  display: inline;
+  background-color: red;
+  position: absolute;
 }
 
 .destination {
-  bottom: 48rem;
-  left: 5rem;
-  z-index: 2;
+  position: absolute;
+  z-index: 1;
+  top: 4rem;
+  left: 2rem;
+  width: 4rem;
+  height: 4rem;
 }
 
 input[type="text"] {
   color: #1a1818;
   font-weight: 800;
-}
-
-#destination {
+  padding: 1rem 2rem;
+  right: 7.5rem;
+  top: 16rem;
+  z-index: 1000;
+  width: 12rem;
+  height: 4rem;
   position: relative;
-  width: 12.2rem;
-  bottom: 48rem;
+  border: black 2px solid;
 }
 
 .destination#submit {
   padding: 0.2rem 2.5rem 0.2rem 2.6rem;
-  position: relative;
+  position: absolute;
   left: 4.5rem;
+  top: 4rem;
   color: rgba(96, 183, 240, 0.8);
   opacity: 0.9;
   font-weight: 800;
@@ -92,7 +95,7 @@ input[type="text"] {
 }
 
 #highCloudIndicator {
-  position: relative;
+  position: absolute;
   z-index: 1;
   -webkit-animation: animateHighClouds 10s linear infinite;
           animation: animateHighClouds 10s linear infinite;
@@ -148,7 +151,7 @@ input[type="text"] {
 }
 
 #bigCloudIndicator {
-  position: relative;
+  position: absolute;
   z-index: 1;
   -webkit-animation: animateBigClouds 20s linear infinite;
           animation: animateBigClouds 20s linear infinite;
@@ -215,29 +218,56 @@ input[type="text"] {
   }
 }
 
-#floatCloudRight {
-  position: relative;
+#floatOneCloudRight {
+  position: absolute;
+  left: 3rem;
+  top: 1rem;
+  bottom: 3rem;
   -webkit-animation: animateCloudRight 5s linear infinite;
           animation: animateCloudRight 5s linear infinite;
+  z-index: 1;
 }
 
 @-webkit-keyframes animateCloudRight {
   0% {
-    top: 100px;
-    -webkit-transform: rotateY(-45deg);
-            transform: rotateY(-45deg);
-    -webkit-transform: rotate(-90deg);
-            transform: rotate(-90deg);
+    top: -10rem;
     right: 50px;
   }
   50% {
-    top: 50px;
+    -webkit-transform: rotate(-90deg);
+            transform: rotate(-90deg);
+    top: -50px;
+    bottom: 50px;
     right: 100px;
   }
   100% {
-    top: 500px;
-    right: 200px;
+    top: 50x;
+    left: 100px;
   }
+}
+
+@keyframes animateCloudRight {
+  0% {
+    top: -10rem;
+    right: 50px;
+  }
+  50% {
+    -webkit-transform: rotate(-90deg);
+            transform: rotate(-90deg);
+    top: -50px;
+    bottom: 50px;
+    right: 100px;
+  }
+  100% {
+    top: 50x;
+    left: 100px;
+  }
+}
+
+#floatCloudRight {
+  position: absolute;
+  -webkit-animation: animateCloudRight 5s linear infinite;
+          animation: animateCloudRight 5s linear infinite;
 }
 
 @keyframes animateCloudRight {
@@ -260,7 +290,7 @@ input[type="text"] {
 }
 
 #floatCloudLeft {
-  position: relative;
+  position: absolute;
   -webkit-animation: animateCloudLeft 15s linear infinite;
           animation: animateCloudLeft 15s linear infinite;
   z-index: 1;

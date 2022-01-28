@@ -60,6 +60,11 @@ const fluffyCloudIndicator = (weather) => {
     return getClouds;
 }
 
+/* const windIndicator = () => {
+    const getWindGust = weather.gust
+    const getWindSpeed = weather.speed
+}
+ */
 function setAttributes(el, attrs) {
     for (var key in attrs) {
         el.setAttribute(key, attrs[key]);
@@ -71,7 +76,7 @@ setAttributes(outputCloud, {
     "class": "outputCloud",
 });
 
-const compareCloudIndicator = () => {
+const compareCloudIndicator = (weather) => {
     if (outputCloud.innerHTML > 80) {
         console.log('yoooo'),
             highCloudIndicator.style.visibility = "visible";
@@ -82,14 +87,29 @@ const compareCloudIndicator = () => {
 }
 compareCloudIndicator();
 
-const inputField = document.getElementById("destination");
 
 submitButton.addEventListener('click', callWeather);
-inputField.addEventListener ('keypress', function (e) {
+inputDestination.addEventListener ('keypress', function (e) {
     if (e.code === 'Enter') {
         callWeather(e);
     }
 });
+
+const invertColor = (e) => {
+    submitButton.style.color = "white";
+    submitButton.style.backgroundColor = "rgba(96, 183, 240, .8)";
+}
+
+submitButton.addEventListener('mouseover', invertColor);
+
+const invertColorBack = (e) => {
+    submitButton.style.color = "rgba(96, 183, 240, .8)";
+    submitButton.style.backgroundColor = "white";
+}
+
+submitButton.addEventListener('mouseout', invertColorBack);
+
+
 
 
 console.log(location);
