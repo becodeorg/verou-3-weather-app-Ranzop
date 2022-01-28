@@ -33,15 +33,18 @@ header p {
     background: linear-gradient(17deg, rgba(96, 183, 240, .8), rgba(84, 183, 240, .8) 70.71%);
     width: 100vw;
     height: 100vh;
-    display: inline-block;
     z-index: -1;
 }
 
 #flexInputContainer {
     padding: 2rem 2rem 2rem 2rem;
-    display: inline;
-    background-color: red;
+    display: flex;
+    flex-direction: row;
     position: absolute;
+    top: 12rem;
+    left: 2.5rem;
+    height: 10rem;
+    width: auto;
 }
 
 .destination {
@@ -51,35 +54,47 @@ header p {
     left:2rem;
     width: 4rem;
     height: 4rem;
+    display: flex;
 }
 
 input[type="text"] {
     color: rgb(26, 24, 24);
     font-weight: 800;
     padding: 1rem 2rem;
-    right: 7.5rem;
-    top: 16rem;
-    z-index: 1000;
+    z-index: 2;
     width: 12rem;
     height: 4rem;
-    position: relative;
     border: black 2px solid;
+    position: sticky;
 }
 
 .destination#submit {
-    padding: 0.2rem 2.5rem 0.2rem 2.6rem;
-    position: absolute;
-    left: 4.5rem;
-    top: 4rem;
+    padding-left: 2rem;
+    padding-top: .8rem;
+    top: 6rem;
     color: rgba(96, 183, 240, .8);
     opacity: 0.9;
     font-weight: 800;
     font-size: large;
     text-shadow: black 2px 2px 2px;
+    width: 12rem;    
 }
 
 .outputCloud#output {
     display: none;
+}
+
+#nextDay {
+    position: absolute;
+    top: 24rem;
+    left: 6rem;
+    height: 2rem;
+    border-radius: 1rem;
+    color: rgba(96, 183, 240, .8);
+    opacity: 0.9;
+    font-weight: 800;
+    font-size: large;
+    text-shadow: black 2px 2px 2px;
 }
 
 #highCloudIndicator {
@@ -131,7 +146,7 @@ input[type="text"] {
 
     50% {
         top: 50px;
-        right: 1000px;
+        right: 10rem;
         top: -40rem;
     }
 

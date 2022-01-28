@@ -50,7 +50,7 @@ const callWeather = (event) => {
             compareCloudIndicator(weather);
             console.log(compareCloudIndicator(weather));
         })
-    }
+}
 
 
 
@@ -89,30 +89,35 @@ compareCloudIndicator();
 
 
 submitButton.addEventListener('click', callWeather);
-inputDestination.addEventListener ('keypress', function (e) {
+inputDestination.addEventListener('keypress', function (e) {
     if (e.code === 'Enter') {
         callWeather(e);
     }
 });
 
 const invertColor = (e) => {
-    submitButton.style.color = "white";
-    submitButton.style.backgroundColor = "rgba(96, 183, 240, .8)";
+    
+        element.style.color = "white";
+        element.style.backgroundColor = "rgba(96, 183, 240, .8)";
+    
+
 }
 
-submitButton.addEventListener('mouseover', invertColor);
+
 
 const invertColorBack = (e) => {
-    submitButton.style.color = "rgba(96, 183, 240, .8)";
-    submitButton.style.backgroundColor = "white";
+    document.querySelectorAll(".buttons").forEach(element => {
+        element.style.color = "rgba(96, 183, 240, .8)";
+        element.style.backgroundColor = "white";
+    })
+
 }
 
-submitButton.addEventListener('mouseout', invertColorBack);
 
-
-
-
-console.log(location);
+document.querySelectorAll(".buttons").forEach(element => {
+    element.addEventListener('mouseout', invertColorBack);
+    element.addEventListener('mouseover', invertColor);
+});
 
 //   http://api.openweathermap.org/data/2.5/weather?q=
 console.log(api_url + location + "s&units=metric&appid=" + Key.key);
