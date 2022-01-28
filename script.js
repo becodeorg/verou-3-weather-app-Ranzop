@@ -21,6 +21,10 @@ console.log(inputDestination);
 const outputCloud = document.createElement("p");
 inputDestination.insertAdjacentElement("afterend", outputCloud);
 
+const outputWind = document.createElement("p");
+document.body.appendChild(outputWind);
+outputWind.style.visibility = "hidden"
+
 const highCloudIndicator = document.getElementById("highCloudIndicator");
 const bigCloudIndicator = document.getElementById("bigCloudIndicator");
 
@@ -38,21 +42,31 @@ const callWeather = (event) => {
          console.log(compareCloudIndicator(weather));
      }
      getWeather(); */
-    fetch(
-            api_url +
-            `${location}&units=metric&appid=` +
-            Key.key)
-        .then((response) => response.json())
-        .then((weather) => {
-            console.log(weather);
-            fluffyCloudIndicator(weather);
-            console.log(fluffyCloudIndicator(weather));
-            compareCloudIndicator(weather);
-            console.log(compareCloudIndicator(weather));
-        })
+
+    const getWeather = async () => {
+        fetch(
+                api_url +
+                `${location}&units=metric&appid=` +
+                Key.key)
+            .then((response) => response.json())
+            .then((weather) => {
+                console.log(weather);
+                fluffyCloudIndicator(weather);
+                console.log(fluffyCloudIndicator(weather));
+                compareCloudIndicator(weather);
+                console.log(compareCloudIndicator(weather));
+                displayDescription(weather);
+            })
+    }
+    getWeather();
 }
 
-
+const displayDescription = (weather) => {
+    const getWindSpeedGust = [weather.wind.speed, weather.wind.gust]
+    console.log(getWindSpeedGust);
+    outputWind.innerHTML = getWindSpeedGust;
+    return getWindSpeedGust;
+}
 
 const fluffyCloudIndicator = (weather) => {
     const getClouds = weather.clouds.all;
@@ -95,29 +109,38 @@ inputDestination.addEventListener('keypress', function (e) {
     }
 });
 
-const invertColor = (e) => {
-    
-        element.style.color = "white";
-        element.style.backgroundColor = "rgba(96, 183, 240, .8)";
-    
+const invertColorNextDay = (e) => {
+    nextDayButton.style.color = "white";
+    nextDayButton.style.backgroundColor = "rgba(96, 183, 240, .8)";
+}
 
+const invertColorBackNextDay = (e) => {
+    nextDayButton.style.color = "rgba(96, 183, 240, .8)";
+    nextDayButton.style.backgroundColor = "white";
+}
+
+const nextDayButton = document.getElementById("nextDay");
+nextDayButton.addEventListener("mouseover", invertColorNextDay);
+nextDayButton.addEventListener("mouseout", invertColorBackNextDay);
+
+
+const invertColorSubmitButton = (e) => {
+    submitButton.style.color = "white";
+    submitButton.style.backgroundColor = "rgba(96, 183, 240, .8)";
+}
+
+const invertColorBackSubmitButton = (e) => {
+    submitButton.style.color = "rgba(96, 183, 240, .8)";
+    submitButton.style.backgroundColor = "white";
 }
 
 
-
-const invertColorBack = (e) => {
-    document.querySelectorAll(".buttons").forEach(element => {
-        element.style.color = "rgba(96, 183, 240, .8)";
-        element.style.backgroundColor = "white";
-    })
-
-}
+submitButton.addEventListener("mouseover", invertColorSubmitButton);
+submitButton.addEventListener("mouseout", invertColorBackSubmitButton);
 
 
-document.querySelectorAll(".buttons").forEach(element => {
-    element.addEventListener('mouseout', invertColorBack);
-    element.addEventListener('mouseover', invertColor);
-});
+
+
 
 //   http://api.openweathermap.org/data/2.5/weather?q=
 console.log(api_url + location + "s&units=metric&appid=" + Key.key);
