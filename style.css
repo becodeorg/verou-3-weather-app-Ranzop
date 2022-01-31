@@ -107,7 +107,7 @@ input[type="text"] {
 #nextDay {
   position: absolute;
   top: 24rem;
-  left: 6rem;
+  left: 4.5rem;
   height: 2rem;
   border-radius: 1rem;
   color: rgba(96, 183, 240, 0.8);
