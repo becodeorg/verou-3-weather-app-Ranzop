@@ -25,6 +25,12 @@ const createImg = (element, cssClass, src, alt, parent) => {
     return (y);
 }
 
+let z;
+const setInnerHTML = (element, element.innerHTML) => {
+    z = element.innerHTML(attribute);
+    return z;
+}
+
 console.log('"http://openweathermap.org/img/wn/" + data.weather[0].icon + "@2x.png"');
 
 const createDay = (result, i) => {
@@ -37,18 +43,21 @@ const createDay = (result, i) => {
     const card = createElement('div', 'card', container);
 
     const imageBox = createElement('div', 'imgBx', card);
-
+    // TODO: fix the fetch into this function so that it can reach the required data to call the image
     const cardImg = createImg('img', 'first-image', '"http://openweathermap.org/img/wn/" + data.weather[0].icon + "@2x.png"', 'first picture', imageBox);
 
     const contentBox = createElement("div", "contentBx", card);
 
-    const cardHeader = document.createElement("h2");
-    cardHeader.innerHTML = dayOfTheWeek;
-    contentBox.appendChild(cardHeader);
+    const cardHeader = createElement("h2", "card-header", contentBox);
+    const weatherDescription = data.weather[0].description;
+    const cardHeaderInnerHTML = setInnerHTML(cardHeader, weatherDescription);
+    console.log(cardHeaderInnerHTML);
 
-    const tempDescription = document.createElement("h4");
-    tempDescription.innerHTML = data.weather[0].description;
-    contentBox.appendChild(tempDescription);
+
+
+
+    const tempDescription = createElement("h4", "temperature-description", contentBox);
+    tempDescription.innerHTML = weatherDescription;
 
     const currentTempBox = document.createElement("div");
     currentTempBox.classList.add("color");
