@@ -25,11 +25,6 @@ const createImg = (element, cssClass, src, alt, parent) => {
     return (y);
 }
 
-let z;
-const setInnerHTML = (element, element.innerHTML) => {
-    z = element.innerHTML(attribute);
-    return z;
-}
 
 console.log('"http://openweathermap.org/img/wn/" + data.weather[0].icon + "@2x.png"');
 
@@ -49,46 +44,39 @@ const createDay = (result, i) => {
     const contentBox = createElement("div", "contentBx", card);
 
     const cardHeader = createElement("h2", "card-header", contentBox);
+    cardHeader.innerHTML = dayOfTheWeek;
+
+
     const weatherDescription = data.weather[0].description;
-    const cardHeaderInnerHTML = setInnerHTML(cardHeader, weatherDescription);
-    console.log(cardHeaderInnerHTML);
+    console.log(weatherDescription);
 
-
-
+    // This is broken, the error message leads me to believe that there is an issue with fetching the data from the API and getting it into data.weather[0].description
 
     const tempDescription = createElement("h4", "temperature-description", contentBox);
     tempDescription.innerHTML = weatherDescription;
 
-    const currentTempBox = document.createElement("div");
-    currentTempBox.classList.add("color");
-    contentBox.appendChild(currentTempBox);
+    const currentTempBox = createElement("div", "color", contentBox);
+
 
     const currentTempHeader = document.createElement("h3");
     currentTempHeader.innerHTML = "Temp:"
     currentTempBox.appendChild(currentTempHeader);
 
-    const currentTemp = document.createElement("span");
-    currentTemp.classList.add("current-temp");
+    const currentTemp = createElement("span", "current-temp", currentTempBox);
     currentTemp.innerHTML = data.temp.day + "°C";
-    currentTempBox.appendChild(currentTemp);
 
-    const minMaxTemperatures = document.createElement("div");
-    minMaxTemperatures.classList.add("details");
-    contentBox.appendChild(minMaxTemperatures);
 
-    const minMaxTempHeader = document.createElement("h3");
+    const minMaxTemperatures = createElement("div", "details", contentBox);
+
+
+    const minMaxTempHeader = document.createElement("h3", "header-for-min-max-temp", minMaxTemperatures);
     minMaxTempHeader.innerHTML = "More:"
-    minMaxTemperatures.appendChild(minMaxTempHeader);
 
-    const minTemp = document.createElement("span");
-    minTemp.classList.add("min-temp")
+    const minTemp = document.createElement("span", "min-temp", minMaxTemperatures);
     minTemp.innerHTML = data.temp.min + "°C";
-    minMaxTemperatures.appendChild(minTemp);
 
-    const maxTemp = document.createElement("span");
-    maxTemp.classList.add("max-temp")
+    const maxTemp = document.createElement("span", "max-temp", minMaxTemperatures);
     maxTemp.innerHTML = data.temp.max + "°C";
-    minMaxTemperatures.appendChild(maxTemp);
 }
 
 // Event will start on a keyup action
